@@ -1,45 +1,21 @@
-const express = require('express')
+const express = require('express');
+const { adminAuth } = require('./middlewares/auth');
+const { userAuth } = require('./middlewares/userAuth');
 const app= express()
 
-app.get('/ab*c',(req,res,next)=>{
-    console.log("ist");
-    
-    next()
-   
-   
-},
-(req,res,next)=>{
-    console.log("2nd");
-    
-   next()
-},
-(req,res,next)=>{
-    console.log("3nd");
-    next()
-   
-},
-(req,res)=>{
-    console.log("4nd");
-    
 
-},
-)
-app.get('/test',(req,res)=>{
-    console.log('postman');
-    res.send('Response')
-} )
 
-app.post('/user',(req,res)=>{   
-    console.log("save data from database");
-    res.send('data succesfully saved')
-    
+app.get('/admin/abc',(req,res,next)=>{
+    cosoe.log("ist");
+    //throw new Error('ggg')
+   // res.send('admin abc')
 })
-app.use('/hello',(req,res)=>{
-    res.send('hello')
+app.use('/',(err,req,res,next)=>{
+    if(err){
+        console.log(err);
+        res.status(500).send("something went wrong")
+    }
 })
- 
-// app.use('/',(req,res)=>{
-//     res.send('landing')
-// })
+
 app.listen(3000)
   
